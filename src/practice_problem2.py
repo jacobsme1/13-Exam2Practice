@@ -3,8 +3,8 @@ PRACTICE Exam 2, practice_problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Max Jacobs.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -32,7 +32,7 @@ import time
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_practice_problem2a()
+    # run_test_practice_problem2a()
     run_test_practice_problem2b()
 
 
@@ -44,7 +44,7 @@ def main():
 def run_test_practice_problem2a():
     """ Tests the   practice_problem2a  function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  practice_problem2a  function defined below.
     #   Include at least **   4    ** tests that, taken together,
     #   would form a    ** REASONABLY GOOD test set **
@@ -58,6 +58,35 @@ def run_test_practice_problem2a():
     print('--------------------------------------------------')
     print('Testing the   practice_problem2a   function:')
     print('--------------------------------------------------')
+
+    # Test 1
+    integers = [2,4,6,8,10]
+    actual = practice_problem2a(integers, 6)
+    expected = [8, 10, 12, 14, 16]
+    print("Expected: " + str(expected))
+    print("Actual: " + str(actual))
+
+    # Test 2
+    integers = [1, 2, 3]
+    actual = practice_problem2a(integers, 0)
+    expected = [1, 2, 3]
+    print("Expected: " + str(expected))
+    print("Actual: " + str(actual))
+
+    # Test 1
+    integers = [4, 8, 12, 16, 20]
+    actual = practice_problem2a(integers, -4)
+    expected = [0, 4, 8, 12, 16]
+    print("Expected: " + str(expected))
+    print("Actual: " + str(actual))
+
+    # Test 1
+    integers = []
+    actual = practice_problem2a(integers, 6)
+    expected = []
+    print("Expected: " + str(expected))
+    print("Actual: " + str(actual))
+
 
 
 def practice_problem2a(sequence, delta):
@@ -79,13 +108,16 @@ def practice_problem2a(sequence, delta):
       :type delta:    int
     """
     ###########################################################################
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     WRITE THE TESTS FIRST (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   5 minutes.
     ###########################################################################
+    for k in range(len(sequence)):
+        sequence[k] = sequence[k] + delta
+    return sequence
 
 
 def run_test_practice_problem2b():
@@ -187,13 +219,19 @@ def practice_problem2b(sequence):
       :type sequence: [str]
     """
     ###########################################################################
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   10 minutes.
     ###########################################################################
+    boi = ''
+    for k in range (len(sequence)):
+        for i in range(len(sequence[k])):
+            boi = boi + (sequence[k])[i]
+            break
+    return boi
 
 
 ###############################################################################
