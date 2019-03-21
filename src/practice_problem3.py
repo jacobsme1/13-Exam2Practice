@@ -641,8 +641,13 @@ def practice_problem3d(sequence):
     #
     #          This solution should *** HAVE NO LOOP (no FOR). ***
     ###########################################################################
-    yeet = list(sequence)
-    practice_problem3c(yeet)
+    oof = list(sequence)
+    boi = practice_problem3c(oof)
+    if len(boi) != 0:
+        return boi[0]
+    if len(boi) == 0:
+        return -1
+
 
 
 

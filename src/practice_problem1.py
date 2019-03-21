@@ -40,9 +40,9 @@ def main():
     # UN-comment tests as you work the problems.
     ###########################################################################
 
-    #run_test_init()
+    run_test_init()
     run_test_append_string()
-    #run_test_double()
+    run_test_double()
     #run_test_shrink()
     #run_test_double_then_shrink()
     #run_test_reset()
@@ -144,7 +144,7 @@ class Box(object):
           :type additional_contents: str
         """
         # ---------------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # DONE: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -166,14 +166,17 @@ class Box(object):
         #       Read_this_ONLY_when_asked_Part_2.txt
         #    and complete your work on the problem.
         # ---------------------------------------------------------------------
-        yeet =''
+        extra = ''
+        n = self.volume - len(self.contents)
+        if len(self.contents) + len(additional_contents) > self.volume:
+            for k in range(len(additional_contents)-n-1, len(additional_contents)):
+                extra = extra + additional_contents[k]
+            for k in range(n):
+                self.contents = self.contents + additional_contents[k]
         if len(self.contents) + len(additional_contents) <= self.volume:
             self.contents = self.contents + additional_contents
-        if len(self.contents) + len(additional_contents) >= self.volume:
-            for k in range(self.volume-self.contents):
-                self.contents = self.contents + additional_contents[k]
-            for k in range(self.volume, self.)
-        return 'oof'
+
+        return extra
 
 
     def double(self):
@@ -210,7 +213,7 @@ class Box(object):
           #                       contents that did NOT fit]
         """
         # ---------------------------------------------------------------------
-        # TODO: 4. Implement and test this function.
+        # DONE: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -222,6 +225,16 @@ class Box(object):
         # FOR FULL CREDIT, YOUR SOLUTION MUST BE NO MORE THAN
         #    ** TWO **   LINES OF CODE.
         #######################################################################
+        extra = ''
+        n = self.volume - len(self.contents)
+        if len(self.contents)*2 > self.volume:
+            for k in range(n, len(self.contents)):
+                extra = extra + self.contents[k]
+            for k in range(n):
+                self.contents = self.contents + self.contents[k]
+        if len(self.contents) + len(self.contents) <= self.volume:
+            self.contents = self.contents + self.contents
+        return extra
 
     def shrink(self, new_volume):
         """
@@ -259,7 +272,7 @@ class Box(object):
           :type new_volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 5. Implement and test this function.
+        # DONE: 5. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -270,6 +283,19 @@ class Box(object):
         # IMPORTANT: Write a solution to this problem in pseudo-code,
         # and THEN translate the pseudo-code to a solution.
         # ---------------------------------------------------------------------
+        extra = ''
+        yeet = ''
+        overflow = len(self.contents)
+        self.volume = new_volume
+        if overflow > self.volume:
+            for k in range(self.volume, len(self.contents)):
+                extra = extra + self.contents[k]
+            for k in range(len(self.contents) - (overflow - self.volume)):
+                yeet = yeet + self.contents[k]
+            self.contents = yeet
+        if overflow <= self.volume:
+            self.contents = self.contents
+        return extra
 
     def double_then_shrink(self, new_volume):
         """
@@ -323,6 +349,9 @@ class Box(object):
         #    DIFFICULTY:      5
         #    TIME ESTIMATE:   5 minutes.
         # ---------------------------------------------------------------------
+        self.double()
+        yeet = self.shrink(new_volume)
+        return len(yeet)
 
     def reset(self):
         """
